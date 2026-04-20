@@ -4,18 +4,8 @@ const Workouts = () => {
   const [workouts, setWorkouts] = useState([]);
   const [error, setError] = useState(null);
 
-  function getApiBaseUrl() {
-    if (process.env.REACT_APP_CODESPACE_URL) {
-      return process.env.REACT_APP_CODESPACE_URL;
-    }
-    if (window?.location?.host?.includes('-3000')) {
-      return window.location.protocol + '//' + window.location.host.replace('-3000', '-8000');
-    }
-    return '';
-  }
-
   useEffect(() => {
-    const endpoint = `${getApiBaseUrl()}/api/workouts/`;
+    const endpoint = `-8000.app.github.dev/api/workouts/`;
     console.log('Fetching Workouts from:', endpoint);
     fetch(endpoint)
       .then(async res => {
